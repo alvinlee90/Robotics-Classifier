@@ -1,5 +1,5 @@
 # Robotics Object Classifier
-Implementation of object classifier in ROS (C++) and TensorFlow (Python) for a mobile robot (KTH robotics project)
+Implementation of object classifier in ROS (C++) and TensorFlow (Python) for a mobile robot (KTH robotics project).
 Transfer learning on the pre-trained MobileNetv1.0128 was used as the object classifier.
 
 ## Results
