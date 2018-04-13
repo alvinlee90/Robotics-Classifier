@@ -1,0 +1,32 @@
+<launch>
+
+  <!-- run computer_vision node -->
+  <node name="computer_vision" pkg="computer_vision" type="computer_vision"/>
+
+  <!-- run object_detection node -->
+  <node name="obj_det" pkg="object_detection" type="object_detection"/>
+
+  <!-- run object_classification node -->
+  <node name="object_classifier" pkg="object_classifier" type="classifier.py"/>
+
+  <!-- launch rubble_detection node -->
+  <!--node name="rubble_detection" pkg="rubble_detection" type="rubble_detection" output="screen"/-->
+
+  <!-- run map_check node -->
+  <node name="map_check" pkg="map_check" type="map_check" output="screen"/>
+  
+
+  <!-- parameters -->
+  <rosparam file="$(find object_detection)/config/object_detection.yaml" command="load"/>
+  <rosparam file="$(find object_classifier)/config/object_classifier.yaml" command="load"/>
+  <rosparam file="$(find rubble_detection)/config/rubble_detection.yaml" command="load"/>
+  <rosparam file="$(find map_check)/config/map_check.yaml" command="load"/>
+
+  <!-- static transform -->
+  <node pkg="tf" type="static_transform_publisher" name="tf_camera_to_robot" args="0.182 0 0.115 0 0.524 0 robot camera_link 100"/>
+
+  <!-- Record evidence rosbag -->
+  <!--node pkg="rosbag" type="rosbag" name="/home/ras23/catkin_ws/dd2425_ht17_G2_phase1" args="record -o /evidence"/-->  
+  <!--node pkg="rosbag" type="rosbag" name="dd2425_ht17_G2_phase1" args="record -o /evidence"/-->  
+
+</launch>

@@ -1,0 +1,14 @@
+<launch>
+  <!-- launch the camera -->
+  <include file="$(find realsense_camera)/launch/sr300_nodelet_rgbd.launch"/>
+  <param name = "/camera/points_xyzrgb_sw_registered/queue_size" value = "10000"/> 
+
+  <!-- launch the rplidar -->
+  <include file="$(find rplidar_ros)/launch/rplidar.launch" />  
+  
+  <!-- static transform [camera to robot] -->
+  <node pkg="tf" type="static_transform_publisher" name="tf_camera_to_robot" args="0.182 0 0.115 0 0.524 0 robot camera_link 100"/>
+
+  <!-- Record evidence rosbag -->
+  <!--node pkg="rosbag" type="rosbag" name="dd2425_ht17_G2_phase1" args="record -o /evidence"/-->  
+</launch>

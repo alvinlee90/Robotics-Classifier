@@ -1,0 +1,7 @@
+cross
+hollow cube
+cylinder
+triangle
+star
+sphere
+cube

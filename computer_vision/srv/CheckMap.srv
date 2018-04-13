@@ -1,0 +1,6 @@
+geometry_msgs/Point obj_map
+string object_id
+int8 object_key
+---
+bool valid
+geometry_msgs/Point valid_obj_map

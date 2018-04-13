@@ -1,0 +1,6 @@
+<launch>
+<!-- launch image_classification script -->
+  <node name="object_classifier" pkg="object_classifier" type="classifier.py" output="screen"/>
+
+ <rosparam file="$(find object_classifier)/config/object_classifier.yaml" command="load"/>
+</launch>

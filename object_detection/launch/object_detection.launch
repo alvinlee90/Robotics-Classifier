@@ -1,0 +1,14 @@
+<launch>
+  <!-- launch the camera -->
+  <include file="$(find realsense_camera)/launch/sr300_nodelet_rgbd.launch" />
+ 
+  <!-- launch object_detection node -->
+  <node name="obj_det" pkg="object_detection" type="object_detection" output="screen"/>
+
+  <!-- launch object_classifier script -->
+  <include file="$(find object_classifier)/launch/object_classifier.launch"/>
+
+  <rosparam file="$(find object_detection)/config/object_detection.yaml" command="load"/>
+  
+  <node pkg="tf" type="static_transform_publisher" name="tf_camera_to_robot" args="0.182 0 0.115 0 0.524 0 robot camera_link 100"/>
+</launch>

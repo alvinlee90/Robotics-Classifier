@@ -1,0 +1,4 @@
+sensor_msgs/Image image
+---
+int8 object
+float32 prob

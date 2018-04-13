@@ -1,0 +1,53 @@
+<launch>
+  <!-- launch the camera -->
+  <!-- include file="$(find realsense_camera)/launch/sr300_nodelet_rgbd.launch"/ -->
+  <!-- param name = "/camera/points_xyzrgb_sw_registered/queue_size" value = "10000"/ --> 
+
+  <!-- run computer_vision node -->
+  <node name="computer_vision" pkg="computer_vision" type="computer_vision" output="screen"/>
+
+  <!-- run object_detection node -->
+  <node name="obj_det" pkg="object_detection" type="object_detection" output="screen"/>
+
+  <!-- run object_classification node -->
+  <node name="object_classifier" pkg="object_classifier" type="classifier.py" output="screen"/>
+
+  <!-- run map_check node -->
+  <node name="map_check" pkg="map_check" type="map_check" output="screen"/>
+
+  <!--node name="particleFilter" pkg="localisation" type="localisation"/-->
+  <node name="particleFilter" pkg="localisation" type="localisation" />
+
+  <!-- launch the rplidar -->
+  <!-- include file="$(find rplidar_ros)/launch/rplidar.launch" / -->  
+  
+  <!-- launch the dead_reckoning -->
+  <include file="$(find dead_reckoning)/launch/dead_reckoning.launch"/>
+
+  <!-- launch the keyboard teleop -->
+  <!-- include file="$(find keyboard_teleop)/launch/keyboard_teleop.launch" /-->  
+
+  <!-- launch the speaker -->
+ <include file="$(find speaker_node)/launch/speaker.launch"/>
+
+  <!-- launch the map -->
+  <include file="$(find map)/launch/map.launch"/>
+
+  <!-- object detection -->
+  <rosparam file="$(find object_detection)/config/object_detection.yaml" command="load"/>
+
+  <!-- object classifier -->
+  <rosparam file="$(find object_classifier)/config/object_classifier.yaml" command="load"/>
+
+  <!-- map check -->
+  <rosparam file="$(find map_check)/config/map_check.yaml" command="load"/>
+
+  <!-- localisation -->
+  <rosparam file="$(find localisation)/config/localisation.yaml" command="load"/>
+
+  <!-- static transform [camera to robot] -->
+  <!-- node pkg="tf" type="static_transform_publisher" name="tf_camera_to_robot" args="0.182 0 0.115 0 0.524 0 robot camera_link 100"/ -->
+
+  <!-- Record evidence rosbag -->
+  <!--node pkg="rosbag" type="rosbag" name="dd2425_ht17_G2_phase1" args="record -o /evidence"/-->  
+</launch>

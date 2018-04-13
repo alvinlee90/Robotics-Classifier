@@ -1,0 +1,81 @@
+# Parameters for object detection - HSV colors
+object_detection:
+  threshold_area:
+    min: 11000
+    max: 50000
+
+  image:
+    width: 640
+    height: 480
+    margin: 15000
+
+  range:
+    min: 0.10
+    max: 1.0
+
+  depth:
+    count: 250
+
+  morphology:
+    itr: 2
+
+  memory:
+    duration: 1.5
+
+  prob_threshold: 0.80
+
+colours:
+  number: 6
+  purple:
+    key: 0
+    LowH: 110
+    HighH: 165
+    LowS: 45
+    HighS: 255
+    LowV: 40
+    HighV: 255 
+
+  red:
+    key: 1
+    LowH: 0
+    HighH: 6
+    LowS: 130
+    HighS: 255
+    LowV: 30
+    HighV: 255
+
+  orange: 
+    key: 2
+    LowH: 6
+    HighH: 12
+    LowS: 190
+    HighS: 255
+    LowV: 135
+    HighV: 255
+
+  yellow:
+    key: 3
+    LowH: 15
+    HighH: 30
+    LowS: 230 
+    HighS: 255
+    LowV: 130
+    HighV: 255
+
+  green:
+    key: 4
+    LowH: 35
+    HighH: 80
+    LowS: 160
+    HighS: 255
+    LowV: 55
+    HighV: 255
+
+  blue:
+    key: 5
+    LowH: 85
+    HighH: 100
+    LowS: 80
+    HighS: 255
+    LowV: 40
+    HighV: 255

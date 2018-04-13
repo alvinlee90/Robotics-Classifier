@@ -1,0 +1,29 @@
+object_classifier:
+  class_list:
+    number: 7
+    object0: hollow_cube
+    object1: triangle
+    object2: ball
+    object3: star
+    object4: cross
+    object5: cube
+    object6: cylinder 
+
+  image:
+    size: 128
+    mean: 127.5
+    std: 127.5
+
+  decision:
+    purple: [false, false, false, true, true, false, false]
+    red: [true, false, true, false, false, false, true]
+    orange: [false, false, false, true, true, false, false]
+    yellow: [false, false, true, false, false, true, false]
+    green: [true, false, false, false, false, true, true]
+    blue: [false, true, false, false, false, true, false]
+  
+  model_path: /home/ras23/catkin_ws/src/computer_vision/object_classifier/graph/output_graph_shape.pb
+
+  layer:
+    input: import/input
+    output: import/final_result
